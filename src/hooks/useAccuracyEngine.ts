@@ -124,7 +124,6 @@ export function useAccuracyEngine() {
         }));
       }, simEnd + 500 * speed);
 
-      state.activeModel;
       makeLogicSteps(prompt).forEach((step, idx) => {
         later(
           () =>
