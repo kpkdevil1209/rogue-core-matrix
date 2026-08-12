@@ -11,7 +11,7 @@ const CRC_TABLE = (() => {
 
 function crc32(bytes: Uint8Array) {
   let c = 0xffffffff;
-  for (let i = 0; i < bytes.length; i++) c = CRC_TABLE[(c ^ bytes[i]) & 0xff] ^ (c >>> 8);
+  for (let i = 0; i < bytes.length; i++) c = CRC_TABLE[(c ^ bytes[i]!) & 0xff]! ^ (c >>> 8);
   return (c ^ 0xffffffff) >>> 0;
 }
 
@@ -22,8 +22,8 @@ export interface ZipEntry {
 
 export function createZip(entries: ZipEntry[]): Blob {
   const enc = new TextEncoder();
-  const chunks: Uint8Array[] = [];
-  const central: Uint8Array[] = [];
+  const chunks: BlobPart[] = [];
+  const central: BlobPart[] = [];
   let offset = 0;
 
   for (const entry of entries) {
@@ -42,7 +42,7 @@ export function createZip(entries: ZipEntry[]): Blob {
     lv.setUint32(22, data.length, true);
     lv.setUint16(26, nameBytes.length, true);
     local.set(nameBytes, 30);
-    chunks.push(local, data);
+    chunks.push(local as unknown as BlobPart, data as unknown as BlobPart);
 
     const cd = new Uint8Array(46 + nameBytes.length);
     const cv = new DataView(cd.buffer);
@@ -56,12 +56,12 @@ export function createZip(entries: ZipEntry[]): Blob {
     cv.setUint16(28, nameBytes.length, true);
     cv.setUint32(42, offset, true);
     cd.set(nameBytes, 46);
-    central.push(cd);
+    central.push(cd as unknown as BlobPart);
 
     offset += local.length + data.length;
   }
 
-  const centralSize = central.reduce((a, c) => a + c.length, 0);
+  const centralSize = central.reduce((a, c) => a + (c as Uint8Array).length, 0);
   const end = new Uint8Array(22);
   const ev = new DataView(end.buffer);
   ev.setUint32(0, 0x06054b50, true);
@@ -70,7 +70,7 @@ export function createZip(entries: ZipEntry[]): Blob {
   ev.setUint32(12, centralSize, true);
   ev.setUint32(16, offset, true);
 
-  return new Blob([...chunks, ...central, end], { type: "application/zip" });
+  return new Blob([...chunks, ...central, end as unknown as BlobPart], { type: "application/zip" });
 }
 
 export function downloadBlob(blob: Blob, filename: string) {
