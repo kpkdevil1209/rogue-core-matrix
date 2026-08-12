@@ -73,9 +73,11 @@ export function useSandbox() {
   const codeRef = useRef(code);
   const healRef = useRef(autoHeal);
   const healCount = useRef(0);
+  const kindRef = useRef(kind);
 
   codeRef.current = code;
   healRef.current = autoHeal;
+  kindRef.current = kind;
 
   const log = useCallback((kindOf: TerminalLine["kind"], text: string) => {
     setLines((prev) => [...prev.slice(-199), { id: seq++, kind: kindOf, text, at: stamp() }]);
@@ -123,8 +125,10 @@ export function useSandbox() {
         healCount.current += 1;
         const next = patch.apply(codeRef.current);
         setCode(next);
+        codeRef.current = next;
+        setDoc(buildDocument(kindRef.current, next));
         log("patch", `${patch.rule} — ${patch.description}`);
-        log("build", "mutation applied, recompiling artifact");
+        log("build", "mutation applied — artifact recompiled automatically");
       } else {
         log(data.type === "warn" ? "warn" : "log", `console: ${data.message}`);
       }
@@ -139,13 +143,6 @@ export function useSandbox() {
     setDoc(buildDocument(kind, codeRef.current));
     log("info", "artifact mounted into isolated viewport");
   }, [kind, log]);
-
-  // auto re-render after a self-heal mutation
-  const lastDoc = useRef("");
-  useEffect(() => {
-    if (!doc) return;
-    lastDoc.current = doc;
-  }, [doc]);
 
   const selectKind = useCallback(
     (next: ArtifactKind) => {
