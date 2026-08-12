@@ -1,26 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Bot } from "lucide-react";
 import { Shell } from "@/components/Shell";
-import { ModuleScaffold } from "@/components/ModuleScaffold";
+import { AccuracyEngine } from "@/components/accuracy/AccuracyEngine";
 
 export const Route = createFileRoute("/accuracy")({
   head: () => ({
     meta: [
       { title: "Zero-Hallucination & Accuracy Engine — DEVIL" },
-      { name: "description", content: "Multi-pass verification lattice, source cross-checking and confidence scoring for every DEVIL output." },
+      {
+        name: "description",
+        content:
+          "1000x Monte-Carlo reasoning simulation, guardrail cross-checks, swarm consensus and live confidence scoring inside DEVIL OS.",
+      },
       { property: "og:title", content: "Zero-Hallucination & Accuracy Engine — DEVIL" },
-      { property: "og:description", content: "Multi-pass verification lattice, source cross-checking and confidence scoring for every DEVIL output." },
+      {
+        property: "og:description",
+        content: "Monte-Carlo reasoning graph, logic verification matrix and golden consensus answers.",
+      },
     ],
   }),
   component: () => (
     <Shell>
-      <ModuleScaffold
-        icon={Bot}
-        tag="CAT 01"
-        title="Zero-Hallucination & Accuracy Engine"
-        description="Multi-pass verification lattice, source cross-checking and confidence scoring for every DEVIL output."
-        capabilities={["Triple-Pass Verifier","Citation Enforcer","Confidence Scoring","Contradiction Detector","Fact Cache","Self-Critique Loop"]}
-      />
+      <AccuracyEngine />
     </Shell>
   ),
 });
