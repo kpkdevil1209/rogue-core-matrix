@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccuracyRouteImport } from './routes/accuracy'
+import { Route as AutocoderRouteImport } from './routes/autocoder'
+import { Route as BiometricsRouteImport } from './routes/biometrics'
+import { Route as DiagnosticsRouteImport } from './routes/diagnostics'
+import { Route as MultimodalRouteImport } from './routes/multimodal'
+import { Route as ProtocolsRouteImport } from './routes/protocols'
+import { Route as SecurityRouteImport } from './routes/security'
+import { Route as TranshumanRouteImport } from './routes/transhuman'
+import { Route as VoiceRouteImport } from './routes/voice'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccuracyRoute = AccuracyRouteImport.update({
+  id: '/accuracy',
+  path: '/accuracy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutocoderRoute = AutocoderRouteImport.update({
+  id: '/autocoder',
+  path: '/autocoder',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BiometricsRoute = BiometricsRouteImport.update({
+  id: '/biometrics',
+  path: '/biometrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiagnosticsRoute = DiagnosticsRouteImport.update({
+  id: '/diagnostics',
+  path: '/diagnostics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MultimodalRoute = MultimodalRouteImport.update({
+  id: '/multimodal',
+  path: '/multimodal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtocolsRoute = ProtocolsRouteImport.update({
+  id: '/protocols',
+  path: '/protocols',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TranshumanRoute = TranshumanRouteImport.update({
+  id: '/transhuman',
+  path: '/transhuman',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VoiceRoute = VoiceRouteImport.update({
+  id: '/voice',
+  path: '/voice',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accuracy': typeof AccuracyRoute
+  '/autocoder': typeof AutocoderRoute
+  '/biometrics': typeof BiometricsRoute
+  '/diagnostics': typeof DiagnosticsRoute
+  '/multimodal': typeof MultimodalRoute
+  '/protocols': typeof ProtocolsRoute
+  '/security': typeof SecurityRoute
+  '/transhuman': typeof TranshumanRoute
+  '/voice': typeof VoiceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accuracy': typeof AccuracyRoute
+  '/autocoder': typeof AutocoderRoute
+  '/biometrics': typeof BiometricsRoute
+  '/diagnostics': typeof DiagnosticsRoute
+  '/multimodal': typeof MultimodalRoute
+  '/protocols': typeof ProtocolsRoute
+  '/security': typeof SecurityRoute
+  '/transhuman': typeof TranshumanRoute
+  '/voice': typeof VoiceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/accuracy': typeof AccuracyRoute
+  '/autocoder': typeof AutocoderRoute
+  '/biometrics': typeof BiometricsRoute
+  '/diagnostics': typeof DiagnosticsRoute
+  '/multimodal': typeof MultimodalRoute
+  '/protocols': typeof ProtocolsRoute
+  '/security': typeof SecurityRoute
+  '/transhuman': typeof TranshumanRoute
+  '/voice': typeof VoiceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/accuracy'
+    | '/autocoder'
+    | '/biometrics'
+    | '/diagnostics'
+    | '/multimodal'
+    | '/protocols'
+    | '/security'
+    | '/transhuman'
+    | '/voice'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/accuracy'
+    | '/autocoder'
+    | '/biometrics'
+    | '/diagnostics'
+    | '/multimodal'
+    | '/protocols'
+    | '/security'
+    | '/transhuman'
+    | '/voice'
+  id:
+    | '__root__'
+    | '/'
+    | '/accuracy'
+    | '/autocoder'
+    | '/biometrics'
+    | '/diagnostics'
+    | '/multimodal'
+    | '/protocols'
+    | '/security'
+    | '/transhuman'
+    | '/voice'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccuracyRoute: typeof AccuracyRoute
+  AutocoderRoute: typeof AutocoderRoute
+  BiometricsRoute: typeof BiometricsRoute
+  DiagnosticsRoute: typeof DiagnosticsRoute
+  MultimodalRoute: typeof MultimodalRoute
+  ProtocolsRoute: typeof ProtocolsRoute
+  SecurityRoute: typeof SecurityRoute
+  TranshumanRoute: typeof TranshumanRoute
+  VoiceRoute: typeof VoiceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +169,84 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accuracy': {
+      id: '/accuracy'
+      path: '/accuracy'
+      fullPath: '/accuracy'
+      preLoaderRoute: typeof AccuracyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/autocoder': {
+      id: '/autocoder'
+      path: '/autocoder'
+      fullPath: '/autocoder'
+      preLoaderRoute: typeof AutocoderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/biometrics': {
+      id: '/biometrics'
+      path: '/biometrics'
+      fullPath: '/biometrics'
+      preLoaderRoute: typeof BiometricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diagnostics': {
+      id: '/diagnostics'
+      path: '/diagnostics'
+      fullPath: '/diagnostics'
+      preLoaderRoute: typeof DiagnosticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/multimodal': {
+      id: '/multimodal'
+      path: '/multimodal'
+      fullPath: '/multimodal'
+      preLoaderRoute: typeof MultimodalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/protocols': {
+      id: '/protocols'
+      path: '/protocols'
+      fullPath: '/protocols'
+      preLoaderRoute: typeof ProtocolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transhuman': {
+      id: '/transhuman'
+      path: '/transhuman'
+      fullPath: '/transhuman'
+      preLoaderRoute: typeof TranshumanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/voice': {
+      id: '/voice'
+      path: '/voice'
+      fullPath: '/voice'
+      preLoaderRoute: typeof VoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccuracyRoute: AccuracyRoute,
+  AutocoderRoute: AutocoderRoute,
+  BiometricsRoute: BiometricsRoute,
+  DiagnosticsRoute: DiagnosticsRoute,
+  MultimodalRoute: MultimodalRoute,
+  ProtocolsRoute: ProtocolsRoute,
+  SecurityRoute: SecurityRoute,
+  TranshumanRoute: TranshumanRoute,
+  VoiceRoute: VoiceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
