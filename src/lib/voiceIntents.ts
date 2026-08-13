@@ -50,9 +50,9 @@ export function extractTarget(transcript: string): string {
   const digits = transcript.replace(/[^\d+]/g, "");
   if (digits.length >= 7) return digits;
   const after = transcript.match(
-    /(?:call|dial|whatsapp|text|sms|navigate to|maps to|open|email|mail)\s+(.+)$/i,
+    /(?:call|dial|whatsapp|whats app|message|text|sms|navigate(?: to)?|maps(?: to)?|map|directions(?: to)?|open|camera|email|mail)\s+(.+)$/i,
   );
-  return after?.[1]?.trim() ?? "";
+  return (after?.[1] ?? "").replace(/^(?:hey devil,?\s*)/i, "").trim();
 }
 
 export function detectIntent(transcript: string): VoiceIntent | null {
