@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mic } from "lucide-react";
 import { Shell } from "@/components/Shell";
-import { ModuleScaffold } from "@/components/ModuleScaffold";
+import { VoiceStudio } from "@/components/voice/VoiceStudio";
 
 export const Route = createFileRoute("/voice")({
   head: () => ({
@@ -14,13 +13,7 @@ export const Route = createFileRoute("/voice")({
   }),
   component: () => (
     <Shell>
-      <ModuleScaffold
-        icon={Mic}
-        tag="CAT 03"
-        title="Voice Mode & Mobile Action Bridge"
-        description="Hands-free voice command channel with graceful fallback when SpeechRecognition is unavailable."
-        capabilities={["Wake Word Listener","Streaming Transcription","Voice Synthesis","Mobile Action Bridge","Offline Queue","Noise Gate"]}
-      />
+      <VoiceStudio />
     </Shell>
   ),
 });
