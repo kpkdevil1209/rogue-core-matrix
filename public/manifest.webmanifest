@@ -1,0 +1,25 @@
+{
+  "name": "DEVIL — Autonomous Rogue AI Operating System",
+  "short_name": "DEVIL",
+  "description": "Rogue AI operating system with voice mode, telemetry HUD and autonomous agent hive.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#030005",
+  "theme_color": "#FF0033",
+  "icons": [
+    {
+      "src": "/icons/devil-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/devil-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
