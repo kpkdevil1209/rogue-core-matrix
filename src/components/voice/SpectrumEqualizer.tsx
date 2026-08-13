@@ -18,10 +18,10 @@ export function SpectrumEqualizer({
             height: `${Math.max(3, v)}%`,
             background:
               i % 2 === 0
-                ? "linear-gradient(to top, hsl(var(--primary)), hsl(var(--accent)))"
-                : "linear-gradient(to top, hsl(var(--accent)), hsl(var(--primary)))",
+                ? "linear-gradient(to top, var(--primary), var(--accent))"
+                : "linear-gradient(to top, var(--accent), var(--primary))",
             opacity: active ? 1 : 0.45,
-            boxShadow: active ? "0 0 6px hsl(var(--primary) / 0.5)" : "none",
+            boxShadow: active ? "0 0 6px color-mix(in oklab, var(--primary) 50%, transparent)" : "none",
           }}
         />
       ))}

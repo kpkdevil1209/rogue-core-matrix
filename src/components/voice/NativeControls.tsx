@@ -30,7 +30,7 @@ function Slider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-[hsl(var(--primary))]"
+        className="w-full accent-primary"
       />
     </label>
   );
