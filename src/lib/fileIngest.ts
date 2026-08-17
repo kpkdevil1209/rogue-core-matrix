@@ -14,7 +14,7 @@ export interface IngestedFile {
   preview: string;
   structured: unknown;
   chunks: IngestChunk[];
-  objectUrl?: string;
+  objectUrl?: string | undefined;
 }
 
 export function detectKind(file: File): IngestedFile["kind"] {
