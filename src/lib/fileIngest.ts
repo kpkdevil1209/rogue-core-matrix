@@ -170,7 +170,8 @@ export function embed(text: string): number[] {
       h ^= t.charCodeAt(i);
       h = Math.imul(h, 16777619);
     }
-    v[Math.abs(h) % DIM] += 1;
+    const idx = Math.abs(h) % DIM;
+    v[idx] = (v[idx] ?? 0) + 1;
   }
   const norm = Math.sqrt(v.reduce((s, x) => s + x * x, 0)) || 1;
   return v.map((x) => x / norm);
